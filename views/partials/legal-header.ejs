@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .legal-page {
+            padding: 100px 0 80px;
+            min-height: 100vh;
+        }
+        
+        .legal-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        
+        .legal-header h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+        
+        .legal-header .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+        
+        .legal-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-primary);
+            padding: 48px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .legal-content h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 48px 0 24px 0;
+            color: var(--text-primary);
+        }
+        
+        .legal-content h2:first-child {
+            margin-top: 0;
+        }
+        
+        .legal-content h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 32px 0 16px 0;
+            color: var(--text-primary);
+        }
+        
+        .legal-content h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 24px 0 12px 0;
+            color: var(--text-primary);
+        }
+        
+        .legal-content p {
+            margin-bottom: 16px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .legal-content ul, .legal-content ol {
+            margin-bottom: 24px;
+            padding-left: 24px;
+            color: var(--text-secondary);
+        }
+        
+        .legal-content li {
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+        
+        .legal-content a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .legal-content a:hover {
+            text-decoration: underline;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(147, 51, 234, 0.08) 100%);
+            padding: 24px;
+            border-radius: 12px;
+            margin: 32px 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .info-box h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .info-box p {
+            margin-bottom: 0;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(6, 182, 212, 0.08) 100%);
+            padding: 32px;
+            border-radius: 16px;
+            margin-top: 48px;
+            text-align: center;
+        }
+        
+        .contact-section h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 32px;
+            transition: gap 0.3s;
+        }
+        
+        .back-link:hover {
+            gap: 12px;
+        }
+        
+        .table-of-contents {
+            background: var(--bg-secondary);
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 48px;
+        }
+        
+        .table-of-contents h3 {
+            margin-top: 0;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+        
+        .table-of-contents ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .table-of-contents li {
+            margin-bottom: 8px;
+        }
+        
+        .table-of-contents a {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="/" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="4" y="4" width="24" height="24" rx="4" stroke="currentColor" stroke-width="2"/>
+                        <path d="M16 8V24M8 16H24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <span>Clear Window</span>
+                </a>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#how-it-works">How It Works</a></li>
+                    <li><a href="/#features">Features</a></li>
+                    <li><a href="/reviews">Reviews</a></li>
+                    <li class="mobile-only"><a href="/login" class="mobile-btn">Sign In</a></li>
+                    <li class="mobile-only"><a href="/signup" class="mobile-btn mobile-btn-primary">Get Started</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                            <path d="M10 2V4M10 16V18M18 10H16M4 10H2M15.5 4.5L14 6M6 14L4.5 15.5M15.5 15.5L14 14M6 6L4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M17 10.5C16.1 13.5 13.3 15.5 10 15.5C6.1 15.5 3 12.4 3 8.5C3 5.2 5 2.4 8 1.5C5 2.5 3 5.2 3 8.5C3 12.4 6.1 15.5 10 15.5C13.3 15.5 16.1 13.5 17 10.5Z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    <div id="userMenuContainer"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <script>
+        // Check if user is logged in and update nav
+        document.addEventListener('DOMContentLoaded', function() {
+            const token = localStorage.getItem('auth_token');
+            const user = JSON.parse(localStorage.getItem('user') || 'null');
+            const container = document.getElementById('userMenuContainer');
+            if (token && user) {
+                // User is logged in - show avatar and dropdown
+                const initials = user.username.substring(0, 2).toUpperCase();
+                container.innerHTML = `
+                    <div class="user-menu">
+                        <button class="user-avatar" id="userMenuBtn" aria-label="User menu">
+                            <span>${initials}</span>
+                        </button>
+                        <div class="user-dropdown" id="userDropdown">
+                            <div class="user-info">
+                                <div class="user-name">${user.username}</div>
+                                <div class="user-email">${user.email}</div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <a href="/account" class="dropdown-item">My Account</a>
+                            <a href="/submit-review" class="dropdown-item">Submit Review</a>
+                            ${user.role === 'admin' ? `<a href="/admin" class="dropdown-item">Admin Dashboard</a>` : ''}
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" id="logoutBtn">Log Out</button>
+                        </div>
+                    </div>
+                `;
+                // Toggle dropdown
+                const menuBtn = document.getElementById('userMenuBtn');
+                const dropdown = document.getElementById('userDropdown');
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdown.classList.toggle('show');
+                });
+                document.addEventListener('click', () => {
+                    dropdown.classList.remove('show');
+                });
+                document.getElementById('logoutBtn').addEventListener('click', () => {
+                    localStorage.removeItem('auth_token');
+                    localStorage.removeItem('user');
+                    window.location.href = '/';
+                });
+            } else {
+                container.innerHTML = `
+                    <a href="/login" class="btn-secondary">Sign In</a>
+                    <a href="/signup" class="btn-primary">Get Started</a>
+                `;
+            }
+        });
+    </script>
+
+    <section class="legal-page">
+        <div class="container">
+            <div class="legal-header">
+                <h1><%= pageTitle %></h1>
+                <p class="subtitle"><%= subtitle %></p>
+                <p class="subtitle" style="margin-top: 8px;"><strong>Last Updated:</strong> November 27, 2025</p>
+            </div>
+
+            <div class="legal-content">
+                <a href="/" class="back-link">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Back to Home
+                </a>
+
+                <!-- Legal page content starts here -->

@@ -1,0 +1,39 @@
+<%- include('../partials/header', { title: 'Login', page: 'login' }) %>
+
+    <main class="auth-page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1>Welcome Back</h1>
+                    <p>Sign in to your Clear Window account</p>
+                    <% if (typeof verified !== 'undefined') { %>
+                        <div class="alert alert-success" style="margin-top:10px;">Your email has been verified! Please log in to continue.</div>
+                    <% } %>
+                </div>
+
+                <form id="loginForm" class="auth-form">
+                    <div id="alertContainer"></div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="Enter your password">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                        Sign In
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="/signup">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<%- include('../partials/footer', { scripts: ['/js/api.js', '/js/auth.js'] }) %>

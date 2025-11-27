@@ -1,0 +1,167 @@
+<%- include('../partials/header', { title: 'My Account', page: 'account' }) %>
+
+    <main class="account-page">
+        <div class="container">
+            <div class="account-layout">
+                <!-- Sidebar -->
+                <aside class="account-sidebar">
+                    <div class="account-nav">
+                        <a href="#profile" class="account-nav-item active" data-section="profile">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 10C12.7614 10 15 7.76142 15 5C15 2.23858 12.7614 0 10 0C7.23858 0 5 2.23858 5 5C5 7.76142 7.23858 10 10 10Z" fill="currentColor"/>
+                                <path d="M10 12C4.477 12 0 14.477 0 17.5V20H20V17.5C20 14.477 15.523 12 10 12Z" fill="currentColor"/>
+                            </svg>
+                            Profile
+                        </a>
+                        <a href="#security" class="account-nav-item" data-section="security">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 0L2 4V9C2 14.55 5.84 19.74 10 21C14.16 19.74 18 14.55 18 9V4L10 0Z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Security
+                        </a>
+                        <a href="#reviews" class="account-nav-item" data-section="reviews">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 1L12.5 6.5L18.5 7.5L14 12L15 18L10 15L5 18L6 12L1.5 7.5L7.5 6.5L10 1Z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            My Reviews
+                        </a>
+                        <a href="#notifications" class="account-nav-item" data-section="notifications">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2C7.8 2 6 3.8 6 6V10L4 12V14H16V12L14 10V6C14 3.8 12.2 2 10 2Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M11 17C11 17.5523 10.5523 18 10 18C9.44772 18 9 17.5523 9 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            Notifications
+                        </a>
+                        <a href="#danger" class="account-nav-item danger" data-section="danger">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2L2 18H18L10 2Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M10 8V12M10 14V15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            Danger Zone
+                        </a>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <div class="account-content">
+                    <div id="alertContainer"></div>
+
+                    <!-- Profile Section -->
+                    <section id="profile-section" class="account-section active">
+                        <h2>Profile Information</h2>
+                        <p class="section-description">Update your account profile information</p>
+
+                        <form id="profileForm" class="account-form">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                                <small id="emailVerificationStatus" class="form-hint"></small>
+                                                    <div id="resendVerificationContainer" style="margin-top: 8px;"></div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <!-- Security Section -->
+                    <section id="security-section" class="account-section">
+                        <h2>Security Settings</h2>
+                        <p class="section-description">Manage your password and account security</p>
+
+                        <form id="passwordForm" class="account-form">
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password</label>
+                                <input type="password" id="currentPassword" name="currentPassword" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <input type="password" id="newPassword" name="newPassword" required minlength="8">
+                                <small class="form-hint">Minimum 8 characters</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm New Password</label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Update Password</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <!-- Reviews Section -->
+                    <section id="reviews-section" class="account-section">
+                        <h2>My Reviews</h2>
+                        <p class="section-description">Manage your submitted reviews</p>
+
+                        <div id="userReviewsList" class="reviews-list">
+                            <div class="loading">Loading your reviews...</div>
+                        </div>
+                    </section>
+
+                    <!-- Notifications Section -->
+                    <section id="notifications-section" class="account-section">
+                        <h2>Notification Preferences</h2>
+                        <p class="section-description">Control what emails you receive</p>
+
+                        <form id="notificationsForm" class="account-form">
+                            <div class="form-group checkbox-group">
+                                <label>
+                                    <input type="checkbox" name="emailReviewStatus" checked>
+                                    <span>Review status updates</span>
+                                </label>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label>
+                                    <input type="checkbox" name="emailSecurity" checked>
+                                    <span>Security alerts</span>
+                                </label>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Save Preferences</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <!-- Danger Zone Section -->
+                    <section id="danger-section" class="account-section">
+                        <h2>Danger Zone</h2>
+                        <p class="section-description">Irreversible account actions</p>
+
+                        <div class="danger-box">
+                            <h3>Delete Account</h3>
+                            <p>Once you delete your account, there is no going back. Your anonymized reviews will remain published, but your account data will be permanently deleted.</p>
+                            <button type="button" id="deleteAccountBtn" class="btn btn-danger">Delete My Account</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <h3>Delete Account</h3>
+            <p>Are you absolutely sure? This action cannot be undone.</p>
+            <p><strong>Type "DELETE" to confirm:</strong></p>
+            <input type="text" id="deleteConfirmInput" placeholder="Type DELETE">
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" id="cancelDelete">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete" disabled>Delete Account</button>
+            </div>
+        </div>
+    </div>
+
+<%- include('../partials/footer', { scripts: ['/js/api.js', '/js/account.js'] }) %>

@@ -1,0 +1,215 @@
+<%- include('../partials/header', { title: 'Admin Dashboard', page: 'admin' }) %>
+<link rel="stylesheet" href="/styles/admin-custom.css">
+
+    <main class="admin-page">
+        <div class="container" style="max-width: 1400px;">
+            <div class="admin-header">
+                <h1 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 0.5rem; color: var(--primary-color); letter-spacing: -1px;">Admin Dashboard</h1>
+                <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem;">Manage users, reviews, and platform settings</p>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="stats-grid">
+                <div class="stat-card" style="box-shadow: 0 2px 12px rgba(0,0,0,0.07);">
+                    <div class="stat-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path d="M16 16C20.4183 16 24 12.4183 24 8C24 3.58172 20.4183 0 16 0C11.5817 0 8 3.58172 8 8C8 12.4183 11.5817 16 16 16Z" fill="currentColor"/>
+                            <path d="M16 19C7.163 19 0 23.163 0 28V32H32V28C32 23.163 24.837 19 16 19Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-label">Total Users</div>
+                        <div class="stat-value" id="totalUsers">-</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path d="M16 2L20 12L30 13L23 20L25 30L16 25L7 30L9 20L2 13L12 12L16 2Z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-label">Total Reviews</div>
+                        <div class="stat-value" id="totalReviews">-</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+                            <path d="M16 8V16L22 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-label">Pending Reviews</div>
+                        <div class="stat-value" id="pendingReviews">-</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect x="4" y="4" width="24" height="24" rx="4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 16L14 18L20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-label">Verified Reviews</div>
+                        <div class="stat-value" id="verifiedReviews">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="reviews" style="font-size: 1.1rem;">Pending Reviews</button>
+                <button class="tab-btn" data-tab="users" style="font-size: 1.1rem;">Manage Users</button>
+                <button class="tab-btn" data-tab="all-reviews" style="font-size: 1.1rem;">All Reviews</button>
+            </div>
+
+            <div id="alertContainer"></div>
+            <div id="jsErrorContainer" style="display:none; background:#ef4444; color:#fff; padding:16px; border-radius:8px; margin-bottom:16px; font-weight:700;"></div>
+
+            <!-- Pending Reviews Tab -->
+            <div id="reviews-tab" class="tab-content active">
+                <div class="section-header" style="background: var(--bg-primary); border-radius: 12px; padding: 24px 24px 8px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                    <h2 style="font-size: 2rem; font-weight: 800; color: var(--primary-color); margin-bottom: 0;">Pending Reviews</h2>
+                    <input type="text" id="reviewSearch" placeholder="Search reviews..." class="search-input" style="max-width: 320px;">
+                </div>
+                <div id="pendingReviewsList" class="admin-list" style="margin-bottom: 32px;">
+                    <div class="loading">Loading pending reviews...</div>
+                    <style>
+                        .admin-card-footer .action-buttons {
+                            gap: 16px;
+                        }
+                        .admin-card-footer .btn-sm {
+                            font-size: 1rem;
+                            padding: 10px 22px;
+                            border-radius: 8px;
+                            font-weight: 600;
+                            letter-spacing: 0.5px;
+                            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+                            transition: background 0.2s, box-shadow 0.2s;
+                        }
+                        .admin-card-footer .btn-success {
+                            background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
+                            color: #fff;
+                            border: none;
+                        }
+                        .admin-card-footer .btn-success:hover {
+                            background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+                        }
+                        .admin-card-footer .btn-danger {
+                            background: linear-gradient(90deg, #ef4444 0%, #f87171 100%);
+                            color: #fff;
+                            border: none;
+                        }
+                        .admin-card-footer .btn-danger:hover {
+                            background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+                        }
+                        .admin-card-footer .btn-secondary {
+                            background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
+                            color: #fff;
+                            border: none;
+                        }
+                        .admin-card-footer .btn-secondary:hover {
+                            background: linear-gradient(90deg, #4f46e5 0%, #6366f1 100%);
+                        }
+                        .modal-actions .btn {
+                            font-size: 1.1rem;
+                            padding: 12px 28px;
+                            border-radius: 10px;
+                            font-weight: 700;
+                            margin-left: 8px;
+                            box-shadow: 0 1px 6px rgba(0,0,0,0.09);
+                        }
+                        .modal-actions .btn-success {
+                            background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
+                            color: #fff;
+                            border: none;
+                        }
+                        .modal-actions .btn-success:hover {
+                            background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+                        }
+                        .modal-actions .btn-danger {
+                            background: linear-gradient(90deg, #ef4444 0%, #f87171 100%);
+                            color: #fff;
+                            border: none;
+                        }
+                        .modal-actions .btn-danger:hover {
+                            background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+                        }
+                    </style>
+                </div>
+            </div>
+
+            <!-- Users Tab -->
+            <div id="users-tab" class="tab-content">
+                <div class="section-header" style="background: var(--bg-primary); border-radius: 12px; padding: 24px 24px 8px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                    <h2 style="font-size: 2rem; font-weight: 800; color: var(--primary-color); margin-bottom: 0;">User Management</h2>
+                    <input type="text" id="userSearch" placeholder="Search users..." class="search-input" style="max-width: 320px;">
+                </div>
+                <div id="usersList" class="admin-list" style="margin-bottom: 32px;">
+                    <div class="loading">Loading users...</div>
+                </div>
+            </div>
+
+            <!-- All Reviews Tab -->
+            <div id="all-reviews-tab" class="tab-content">
+                <div class="section-header" style="background: var(--bg-primary); border-radius: 12px; padding: 24px 24px 8px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                    <h2 style="font-size: 2rem; font-weight: 800; color: var(--primary-color); margin-bottom: 0;">All Reviews</h2>
+                    <div class="filter-group" style="gap: 16px;">
+                        <select id="statusFilter" class="filter-select" style="min-width: 160px;">
+                            <option value="">Choose Filter</option>
+                            <option value="pending">Pending</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                        <input type="text" id="allReviewsSearch" placeholder="Search..." class="search-input" style="max-width: 320px;">
+                    </div>
+                </div>
+                <div id="allReviewsList" class="admin-list" style="margin-bottom: 32px;">
+                    <div class="loading">Loading reviews...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Review Detail Modal -->
+    <div id="reviewModal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Review Details</h3>
+                <button class="modal-close" id="closeReviewModal">&times;</button>
+            </div>
+            <div id="reviewModalContent" class="modal-body">
+                <!-- Dynamic content loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- User Detail Modal -->
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>User Details</h3>
+                <button class="modal-close" id="closeUserModal">&times;</button>
+            </div>
+            <div id="userModalContent" class="modal-body">
+                <!-- Dynamic content loaded here -->
+            </div>
+        </div>
+    </div>
+
+<%- include('../partials/footer', { scripts: ['/js/api.js', '/js/admin.js'] }) %>
+<script>
+window.addEventListener('error', function(e) {
+    var container = document.getElementById('jsErrorContainer');
+    if (container) {
+        container.textContent = 'JS Error: ' + (e.error ? e.error.message : e.message);
+        container.style.display = 'block';
+    }
+});
+</script>

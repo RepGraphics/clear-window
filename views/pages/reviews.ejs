@@ -1,0 +1,23 @@
+<%- include('../partials/header', { title: 'Reviews', page: 'reviews' }) %>
+
+    <main class="reviews-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Verified Reviews</h1>
+                <p>Browse authentic, verified reviews from real tenants</p>
+                <a href="/submit-review" class="btn btn-primary">Submit a Review</a>
+            </div>
+
+            <div class="reviews-filters">
+                <input type="text" id="searchInput" placeholder="Search by property name or address..." class="search-input">
+            </div>
+
+            <div id="reviewsContainer" class="reviews-list">
+                <div class="loading">Loading reviews...</div>
+            </div>
+
+            <div id="pagination" class="pagination"></div>
+        </div>
+    </main>
+
+<%- include('../partials/footer', { scripts: ['/js/api.js', '/js/reviews.js'] }) %>

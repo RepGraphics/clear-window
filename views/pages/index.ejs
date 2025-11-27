@@ -1,0 +1,298 @@
+<%- include('../partials/header', { title: 'Transparent, Verified Reviews', page: 'home' }) %>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Transparent Reviews.<br>
+                    <span class="gradient-text">Verified Truth.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    A platform for honest, anonymous feedback backed by real verification. 
+                    Where every voice counts, but manipulation doesn't stand a chance.
+                </p>
+                <div class="hero-actions">
+                    <a href="/submit-review" class="btn-primary btn-large">Leave a Review</a>
+                    <a href="/reviews" class="btn-secondary btn-large">Search Reviews</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number"><%= typeof stats?.reviews?.published === 'number' ? stats.reviews.published : '0' %></div>
+                        <div class="stat-label">Published Reviews</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number"><%= typeof stats?.ratings?.average === 'number' ? (Math.round(stats.ratings.average * 100) / 100) + '★' : '0★' %></div>
+                        <div class="stat-label">Average Rating</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Anonymous</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="section">
+        <div class="container">
+            <h2 class="section-title">How Clear Window Works</h2>
+            <p class="section-subtitle">Four pillars of trust that power our platform</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/>
+                            <path d="M17 24L22 29L31 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Review Verification</h3>
+                    <p>Every reviewer must verify their connection to the property or service through proof of address or documentation. Your identity stays anonymous, but your review is verified as genuine.</p>
+                    <ul class="feature-list">
+                        <li>Proof of address required</li>
+                        <li>Identity remains anonymous</li>
+                        <li>Automated verification process</li>
+                        <li>Secure data handling</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <rect x="10" y="10" width="28" height="28" rx="4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M24 18V30M18 24H30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Anti-Brigading Protection</h3>
+                    <p>Sophisticated algorithms detect and prevent coordinated attacks, fake reviews, and competitor sabotage. No more review bombing or manipulation.</p>
+                    <ul class="feature-list">
+                        <li>Pattern detection algorithms</li>
+                        <li>IP and device fingerprinting</li>
+                        <li>Temporal analysis</li>
+                        <li>Network relationship mapping</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M24 10L29 20L40 21.5L32 29L34 40L24 35L14 40L16 29L8 21.5L19 20L24 10Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Accuracy Verification</h3>
+                    <p>Anonymous doesn't mean unchecked. We cross-reference complaints with public records, support tickets, and other verified sources to ensure accuracy.</p>
+                    <ul class="feature-list">
+                        <li>Cross-reference verification</li>
+                        <li>Multiple source validation</li>
+                        <li>Historical data analysis</li>
+                        <li>Community dispute resolution</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <rect x="12" y="18" width="8" height="20" stroke="currentColor" stroke-width="2"/>
+                            <rect x="20" y="12" width="8" height="26" stroke="currentColor" stroke-width="2"/>
+                            <rect x="28" y="22" width="8" height="16" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Smart Weighting Algorithm</h3>
+                    <p>Not all reviews carry equal weight. Our algorithm considers review patterns, severity, and volume to provide fair, balanced ratings.</p>
+                    <ul class="feature-list">
+                        <li>Context-aware weighting</li>
+                        <li>Pattern recognition (e.g., 40 students vs 1 landlord)</li>
+                        <li>Issue severity scoring</li>
+                        <li>Time-decay modeling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Verification Process -->
+    <section id="verification" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Our Verification Process</h2>
+            <p class="section-subtitle">Stay anonymous while proving you're real</p>
+            
+            <div class="verification-flow">
+                <div class="flow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Submit Review</h3>
+                        <p>Write your honest review about the property, landlord, or service.</p>
+                    </div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Provide Proof</h3>
+                        <p>Upload proof of address (utility bill, lease agreement, etc.) through our secure system.</p>
+                    </div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Automated Anonymization</h3>
+                        <p>Our system verifies your connection, then immediately strips all identifying information.</p>
+                    </div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Review Published</h3>
+                        <p>Your verified, anonymous review goes live for others to see.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="verification-security">
+                <div class="security-badge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L3 7V12C3 16.55 6.84 20.74 12 22C17.16 20.74 21 16.55 21 12V7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>256-bit Encryption</span>
+                </div>
+                <div class="security-badge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
+                        <path d="M8 11V7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7V11" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span>GDPR Compliant</span>
+                </div>
+                <div class="security-badge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 17C11.45 17 11 16.55 11 16V12C11 11.45 11.45 11 12 11C12.55 11 13 11.45 13 12V16C13 16.55 12.55 17 12 17ZM13 9H11V7H13V9Z" fill="currentColor"/>
+                    </svg>
+                    <span>Auto Data Deletion</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Safety -->
+    <section id="trust" class="section">
+        <div class="container">
+            <h2 class="section-title">Trust & Safety</h2>
+            <p class="section-subtitle">How we protect against manipulation</p>
+            
+            <div class="trust-content">
+                <div class="trust-visual">
+                    <div class="trust-graphic">
+                        <div class="graphic-element shield">
+                            <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                                <path d="M60 10L20 30V55C20 80.5 38.5 104.5 60 110C81.5 104.5 100 80.5 100 55V30L60 10Z" stroke="currentColor" stroke-width="3" fill="rgba(99, 102, 241, 0.1)"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trust-details">
+                    <div class="trust-item">
+                        <h3>🛡️ Anti-Brigading Detection</h3>
+                        <p>Our AI-powered system identifies suspicious patterns:</p>
+                        <ul>
+                            <li>Multiple reviews from similar IP ranges</li>
+                            <li>Unusual review velocity (many reviews in short time)</li>
+                            <li>Similar writing patterns or phrasing</li>
+                            <li>Coordinated timing across multiple accounts</li>
+                        </ul>
+                    </div>
+
+                    <div class="trust-item">
+                        <h3>⚖️ Smart Weighting System</h3>
+                        <p>Context matters. Our algorithm considers:</p>
+                        <ul>
+                            <li><strong>Volume patterns:</strong> 40 students reporting the same heating issue carries more weight than 1 landlord dispute</li>
+                            <li><strong>Issue severity:</strong> Safety concerns weighted higher than minor inconveniences</li>
+                            <li><strong>Historical context:</strong> Consistent patterns over time vs. isolated incidents</li>
+                            <li><strong>Verification level:</strong> Highly verified users get slight preference</li>
+                        </ul>
+                    </div>
+
+                    <div class="trust-item">
+                        <h3>✓ Accuracy Checks</h3>
+                        <p>Anonymous doesn't mean unverified:</p>
+                        <ul>
+                            <li>Cross-reference with public records (when available)</li>
+                            <li>Check against maintenance logs and support tickets</li>
+                            <li>Community flagging system for disputes</li>
+                            <li>Subject of review can respond with evidence</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Scenarios -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Real-World Examples</h2>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-scenario">Scenario A</div>
+                    <h3>The Student Housing Case</h3>
+                    <p>40 students report broken heating in winter. 1 landlord disputes it.</p>
+                    <div class="example-result">
+                        <strong>Result:</strong> Algorithm weights the 40 verified student reports significantly higher. Issue flagged as critical. Landlord's dispute noted but doesn't override pattern.
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-scenario">Scenario B</div>
+                    <h3>The Competitor Attack</h3>
+                    <p>50 negative reviews appear in 24 hours, all from new accounts, similar language.</p>
+                    <div class="example-result">
+                        <strong>Result:</strong> Anti-brigading system flags suspicious pattern. Reviews held for additional verification. IP analysis reveals coordination. Reviews rejected.
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-scenario">Scenario C</div>
+                    <h3>The Legitimate Dispute</h3>
+                    <p>Tenant and landlord have conflicting accounts of property damage.</p>
+                    <div class="example-result">
+                        <strong>Result:</strong> Both parties verified. System cross-checks with move-in/move-out reports. Both reviews published with "Disputed" flag, allowing readers to see both sides.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">About Clear Window</h2>
+                <p class="about-text">
+                    Clear Window was built on a simple belief: transparency and privacy aren't mutually exclusive. 
+                    Whether you're a tenant, student, or consumer, you deserve to share your honest experience 
+                    without fear of retaliation—and others deserve to read reviews they can actually trust.
+                </p>
+                <p class="about-text">
+                    Traditional review platforms suffer from fake reviews, brigading, and manipulation. 
+                    We've built something different: a platform where verification meets anonymity, 
+                    where algorithms detect deception, and where every voice is heard but weighed fairly.
+                </p>
+                
+                <div class="cta-section">
+                    <h3>Ready to share your experience?</h3>
+                    <div class="cta-buttons">
+                        <button class="btn-primary btn-large">Leave a Review</button>
+                        <button class="btn-secondary btn-large">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<%- include('../partials/footer', { scripts: null }) %>
