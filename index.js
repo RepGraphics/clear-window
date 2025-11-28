@@ -13,6 +13,7 @@ const authRoutes = require('./routes/auth');
 const reviewRoutes = require('./routes/reviews');
 const adminRoutes = require('./routes/admin');
 const statsRoutes = require('./routes/stats');
+const feedbackRoutes = require('./routes/feedback');
 
 // Import middleware
 const errorHandler = require('./middleware/errorHandler');
@@ -74,6 +75,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/stats', statsRoutes);
+app.use('/api/feedback', feedbackRoutes);
 
 // Clean URL routing for pages
 app.get('/login', (req, res) => {
@@ -114,6 +116,20 @@ app.get('/cookie-policy', (req, res) => {
 
 app.get('/gdpr', (req, res) => {
     res.render('pages/gdpr');
+});
+
+app.get('/feedback', async (req, res) => {
+    const Feedback = require('./models/Feedback');
+    const feedbackList = await Feedback.find({}, { email: 0 }).sort({ createdAt: -1 }).lean();
+    res.render('pages/feedback', { feedbackList });
+});
+
+app.get('/workshops', (req, res) => {
+    res.render('pages/workshops');
+});
+
+app.get('/campaign', (req, res) => {
+    res.render('pages/campaign');
 });
 
 // Serve index.html for root and catch-all

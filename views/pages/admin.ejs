@@ -203,8 +203,64 @@
         </div>
     </div>
 
+
 <%- include('../partials/footer', { scripts: ['/js/api.js', '/js/admin.js'] }) %>
 <script>
+// Tab persistence using localStorage
+document.addEventListener('DOMContentLoaded', function() {
+    var tabBtns = document.querySelectorAll('.tab-btn');
+    var tabContents = document.querySelectorAll('.tab-content');
+    var savedTab = localStorage.getItem('adminTab') || 'reviews';
+
+    function showTab(tab) {
+        tabBtns.forEach(function(btn) {
+            btn.classList.toggle('active', btn.dataset.tab === tab);
+        });
+        tabContents.forEach(function(content) {
+            content.classList.toggle('active', content.id === tab + '-tab');
+        });
+        localStorage.setItem('adminTab', tab);
+    }
+
+    tabBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            showTab(btn.dataset.tab);
+        });
+    });
+
+    showTab(savedTab);
+});
+
+// Refresh after admin actions
+
+// Force full page reload after admin actions to guarantee fresh data
+function adminActionRefresh() {
+    window.location.reload();
+}
+
+
+// Attach refresh to approve/reject review actions
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Improved: Attach refresh to user management actions (promote, demote, delete) after AJAX success
+    document.body.addEventListener('click', function(e) {
+        // Review approve/reject
+        if (e.target.classList.contains('btn-success') || e.target.classList.contains('btn-danger')) {
+            setTimeout(adminActionRefresh, 600);
+        }
+        // User management actions: specifically target buttons for promote, demote, delete
+        if (
+            e.target.matches('.btn-promote') ||
+            e.target.matches('.btn-demote') ||
+            e.target.matches('.btn-delete-user')
+        ) {
+            // If using AJAX, listen for completion and then refresh
+            // Otherwise, refresh after short delay
+            setTimeout(adminActionRefresh, 600);
+        }
+    });
+});
+
 window.addEventListener('error', function(e) {
     var container = document.getElementById('jsErrorContainer');
     if (container) {

@@ -11,6 +11,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     --primary-color: #0284c7;
     --primary-dark: #0369a1;
@@ -290,6 +294,24 @@ body * {
 .btn-large {
     padding: 14px 32px;
     font-size: 16px;
+}
+
+/* Accent Button Style */
+.btn-accent {
+    background: var(--gradient-accent);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-weight: 600;
+    box-shadow: var(--shadow-md);
+    transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+    text-decoration: none;
+    display: inline-block;
+}
+.btn-accent:hover {
+    background: linear-gradient(90deg, #2563eb 0%, #0284c7 100%);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px) scale(1.04);
 }
 
 /* Hero Section */
@@ -2139,6 +2161,52 @@ body * {
     text-decoration: underline;
 }
 
+/* Hero Badges */
+.hero-badges {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+.badge-btn {
+    /* Use same base as .btn-primary/.btn-secondary */
+    display: inline-block;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 0.5em 1.6em;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    box-shadow: var(--shadow-sm);
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.18s;
+}
+.badge-primary {
+    background: var(--gradient);
+    color: #fff;
+    box-shadow: var(--shadow-md);
+}
+.badge-primary:hover {
+    background: var(--gradient-accent);
+    color: #fff;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px) scale(1.04);
+}
+.badge-secondary {
+    background: #fff;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    box-shadow: var(--shadow-sm);
+}
+.badge-secondary:hover {
+    background: var(--bg-light);
+    color: var(--primary-dark);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px) scale(1.04);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .account-layout {
@@ -2172,4 +2240,64 @@ body * {
     .action-buttons {
         flex-direction: column;
     }
+}
+
+/* Feedback List Styles */
+.feedback-list {
+    margin-top: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.feedback-list .section-title {
+    margin-bottom: 24px;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+.feedback-item {
+    background: linear-gradient(90deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: 14px;
+    padding: 20px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(59,130,246,0.07);
+    border: 1px solid var(--border-color);
+    transition: box-shadow 0.18s, transform 0.18s;
+}
+.feedback-item:hover {
+    box-shadow: 0 6px 24px rgba(59,130,246,0.13);
+    transform: translateY(-2px) scale(1.02);
+}
+.feedback-item .feedback-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-size: 1.05em;
+}
+.feedback-item .feedback-date {
+    font-size: 0.92em;
+    color: var(--text-light);
+    font-weight: 400;
+}
+.feedback-item .feedback-message {
+    color: var(--text-secondary);
+    font-size: 1.08em;
+    white-space: pre-line;
+    line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .hero-badges {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .badge-btn {
+    width: 100%;
+    text-align: center;
+    font-size: 1.08em;
+  }
 }

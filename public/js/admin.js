@@ -1,3 +1,7 @@
+// Global admin action refresh function
+function adminActionRefresh() {
+    window.location.reload();
+}
 // Manually verify user email from admin dashboard (global scope)
 async function manuallyVerifyEmail(userId, btn) {
     btn.disabled = true;
@@ -83,9 +87,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         await loadStats();
         await loadPendingReviews();
-        // Only load users and all reviews if their tab is activated
-        // If All Reviews tab is active on page load, load all reviews
-        const allReviewsTab = document.getElementById('all-reviews-tab');
+        // Load users if users tab is active
+        const savedTab = localStorage.getItem('adminTab') || 'reviews';
+        if (savedTab === 'users') {
+            await loadUsers();
+        }
+        // Always load all reviews for all-reviews tab
         const statusFilter = document.getElementById('statusFilter');
         if (statusFilter) statusFilter.value = '';
         await loadAllReviews();
@@ -291,10 +298,7 @@ async function approveReview(reviewId) {
     try {
         await api.approveReview(reviewId);
         showAlert('Review approved successfully', 'success');
-        await loadPendingReviews();
-        await loadAllReviews();
-        await loadStats();
-        document.getElementById('reviewModal').classList.remove('show');
+        adminActionRefresh();
     } catch (error) {
         showAlert(error.message || 'Failed to approve review', 'error');
     }
@@ -306,10 +310,7 @@ async function rejectReview(reviewId) {
     try {
         await api.rejectReview(reviewId);
         showAlert('Review rejected', 'success');
-        await loadPendingReviews();
-        await loadAllReviews();
-        await loadStats();
-        document.getElementById('reviewModal').classList.remove('show');
+        adminActionRefresh();
     } catch (error) {
         showAlert(error.message || 'Failed to reject review', 'error');
     }
@@ -321,8 +322,7 @@ async function suspendUser(userId) {
     try {
         await api.suspendUser(userId);
         showAlert('User suspended', 'success');
-        await loadUsers();
-        await loadStats();
+        adminActionRefresh();
     } catch (error) {
         showAlert(error.message || 'Failed to suspend user', 'error');
     }
@@ -332,8 +332,7 @@ async function activateUser(userId) {
     try {
         await api.activateUser(userId);
         showAlert('User activated', 'success');
-        await loadUsers();
-        await loadStats();
+        adminActionRefresh();
     } catch (error) {
         showAlert(error.message || 'Failed to activate user', 'error');
     }
@@ -345,8 +344,7 @@ async function deleteUser(userId) {
     try {
         await api.deleteUserAsAdmin(userId);
         showAlert('User deleted', 'success');
-        await loadUsers();
-        await loadStats();
+        adminActionRefresh();
     } catch (error) {
         showAlert(error.message || 'Failed to delete user', 'error');
     }
@@ -427,10 +425,7 @@ async function deleteReview(reviewId) {
     try {
         await api.deleteReview(reviewId);
         showAlert('Review deleted', 'success');
-        await loadAllReviews();
-        await loadStats();
-        const modal = document.getElementById('reviewModal');
-        if (modal) modal.classList.remove('show');
+        adminActionRefresh();
     } catch (error) {
         showAlert(error.message || 'Failed to delete review', 'error');
     }

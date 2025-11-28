@@ -1,9 +1,67 @@
 <%- include('../partials/header', { title: 'Transparent, Verified Reviews', page: 'home' }) %>
 
+    <!-- Splash Screen -->
+    <div id="splashScreen" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;background:var(--gradient);display:flex;align-items:center;justify-content:center;transition:opacity 0.6s;">
+      <div style="background:var(--bg-primary);border-radius:28px;box-shadow:0 8px 32px rgba(59,130,246,0.18);padding:56px 32px;max-width:90vw;width:420px;text-align:center;border:1.5px solid var(--border-color);">
+        <div style="display:flex;justify-content:center;margin-bottom:18px;">
+          <svg width="48" height="48" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="24" height="24" rx="4" stroke="#3B82F6" stroke-width="2" fill="none"/>
+            <path d="M16 8V24M8 16H24" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <h1 style="font-size:2.1rem;font-weight:800;color:var(--primary-color);margin-bottom:16px;letter-spacing:-0.02em;">Welcome to Clear Window</h1>
+        <p style="font-size:1.13rem;color:var(--text-secondary);margin-bottom:16px;">This is a live demo of the platform proposed in our campaign.</p>
+        <p style="font-size:1.05rem;color:var(--primary-dark);margin-bottom:28px;">The site is fully functional so you can submit reviews, view existing ones, submit feedback for our campaign and view our campaign material.</p>
+        <p style="font-size:0.98rem;color:var(--text-secondary);margin-bottom:0;opacity:0.85;">This welcome screen will only appear once per device/browser.</p>
+        <button id="splashContinue" class="btn-primary btn-large" style="width:100%;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:10px;">
+          Continue <span id="splashCountdown">(20)</span>
+        </button>
+      </div>
+    </div>
+
+        <script>
+            // Only show splash if not previously viewed
+            var splashScreen = document.getElementById('splashScreen');
+            var splashContinue = document.getElementById('splashContinue');
+            var splashCountdown = document.getElementById('splashCountdown');
+            var splashSeconds = 20;
+
+            function hideSplash() {
+                splashScreen.style.opacity = 0;
+                setTimeout(function(){
+                    splashScreen.style.display = 'none';
+                }, 600);
+                localStorage.setItem('splashViewed', 'true');
+            }
+
+            if(localStorage.getItem('splashViewed') === 'true') {
+                splashScreen.style.display = 'none';
+            } else {
+                var splashInterval = setInterval(function(){
+                    splashSeconds--;
+                    splashCountdown.textContent = '(' + splashSeconds + ')';
+                    if(splashSeconds <= 0){
+                        clearInterval(splashInterval);
+                    }
+                }, 1000);
+                splashContinue.onclick = hideSplash;
+                // Auto-hide after 20s
+                setTimeout(function(){
+                    if(splashScreen.style.display!=='none'){
+                        hideSplash();
+                    }
+                }, 20000);
+            }
+        </script>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
+                <div class="hero-badges" style="display: flex; gap: 16px; justify-content: center; margin-bottom: 24px;">
+                    <a href="/feedback" class="badge-btn badge-primary">Submit Campaign Feedback</a>
+                    <a href="/campaign" class="badge-btn badge-secondary">View Our Campaign</a>
+                </div>
                 <h1 class="hero-title">
                     Transparent Reviews.<br>
                     <span class="gradient-text">Verified Truth.</span>
@@ -15,7 +73,9 @@
                 <div class="hero-actions">
                     <a href="/submit-review" class="btn-primary btn-large">Leave a Review</a>
                     <a href="/reviews" class="btn-secondary btn-large">Search Reviews</a>
+                    <a href="/workshops" class="btn-primary btn-large">Workshops</a>
                 </div>
+                
                 <div class="hero-stats">
                     <div class="stat">
                         <div class="stat-number"><%= typeof stats?.reviews?.published === 'number' ? stats.reviews.published : '0' %></div>
@@ -287,8 +347,8 @@
                 <div class="cta-section">
                     <h3>Ready to share your experience?</h3>
                     <div class="cta-buttons">
-                        <button class="btn-primary btn-large">Leave a Review</button>
-                        <button class="btn-secondary btn-large">Learn More</button>
+                        <a href="/submit-review" class="btn-primary btn-large">Leave a Review</a>
+                        <a href="/campaign" class="btn-secondary btn-large">Learn More</a>
                     </div>
                 </div>
             </div>
