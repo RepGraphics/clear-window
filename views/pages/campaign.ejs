@@ -1,7 +1,26 @@
-
 <%- include('../partials/header', { title: 'Clear Window Campaign', page: 'campaign' }) %>
 
 <div class="container campaign-page" style="max-width:900px;margin:auto;padding:32px 0;">
+  <!-- Campaign Page Menu -->
+  <nav class="campaign-menu" style="position:sticky;top:0;left:0;right:0;width:100%;z-index:100;background:#fff;border-radius:0 0 12px 12px;margin-bottom:24px;box-shadow:0 2px 8px rgba(59,130,246,0.12);padding:10px 0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;">
+    <style>
+      @media (max-width: 600px) {
+        .campaign-menu {
+          left: 0 !important;
+          right: 0 !important;
+          width: 100vw !important;
+          border-radius: 0 0 12px 12px !important;
+        }
+      }
+    </style>
+    <a href="#mission" style="color:var(--primary-color);font-weight:600;padding:6px 14px;border-radius:8px;text-decoration:none;transition:background 0.2s;">Mission</a>
+    <a href="#research" style="color:var(--primary-color);font-weight:600;padding:6px 14px;border-radius:8px;text-decoration:none;transition:background 0.2s;">Research</a>
+    <a href="#stats" style="color:var(--primary-color);font-weight:600;padding:6px 14px;border-radius:8px;text-decoration:none;transition:background 0.2s;">Statistics</a>
+    <a href="#rating" style="color:var(--primary-color);font-weight:600;padding:6px 14px;border-radius:8px;text-decoration:none;transition:background 0.2s;">Rating System</a>
+    <a href="#tactics" style="color:var(--primary-color);font-weight:600;padding:6px 14px;border-radius:8px;text-decoration:none;transition:background 0.2s;">Tactics</a>
+    <a href="#rights" style="color:var(--primary-color);font-weight:600;padding:6px 14px;border-radius:8px;text-decoration:none;transition:background 0.2s;">Human Rights</a>
+    <a href="#team" style="color:var(--primary-color);font-weight:600;padding:6px 14px;border-radius:8px;text-decoration:none;transition:background 0.2s;">Team</a>
+  </nav>
   <style>
     @media (max-width: 600px) {
       .campaign-page {
@@ -64,131 +83,60 @@
       }
     }
   </style>
-  <h1 style="font-size:2.8rem;font-weight:900;margin-bottom:22px;color:var(--primary-color);letter-spacing:-1px;text-align:center;">Clear Window Campaign</h1>
-  <p style="font-size:1.25rem;color:var(--text-secondary);margin-bottom:32px;text-align:center;max-width:700px;margin:auto;">
-    Our campaign is built on <span style="color:var(--primary-color);font-weight:700;">transparency</span>, designed to let students see exactly what's inside the world of renting. No fog, no curtains—just the truth, so you can make sustainable, informed choices about where you live.
+  <h1 style="font-size:2.8rem;font-weight:900;margin-bottom:22px;color:var(--primary-color);letter-spacing:-1px;text-align:center;">CLEAR WINDOW</h1>
+  <p style="font-size:1.25rem;color:var(--text-secondary);margin-bottom:12px;text-align:center;max-width:700px;margin-left:auto;margin-right:auto;">
+    Making student housing transparent
+  </p>
+  <p style="font-size:1.15rem;color:var(--text-secondary);margin-bottom:32px;text-align:center;max-width:700px;margin-left:auto;margin-right:auto;">
+    Our campaign is like a <span style="color:var(--primary-color);font-weight:700;">clear window</span>, built on transparency and designed to let students see exactly what's inside the world of renting. No fog, no curtains—just the truth, so you can make sustainable, informed choices about where you live.
   </p>
 
   <div style="display:grid;gap:32px;">
-    <section style="background:var(--bg-light);border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.07);">
-      <h2 style="font-size:1.5rem;color:var(--primary-color);font-weight:800;margin-bottom:12px;">Mission Statement</h2>
-      <p style="font-size:1.08rem;color:var(--text-secondary);">We are a student-led housing campaign created by students for students. Our mission is to empower and uplift renters through accessible education on student housing rights. We fight for safe, fair, and transparent renting by giving students the tools and confidence to know their rights, call out bad landlords and agencies, recognise the good ones, and take collective action to transform the student housing experience.</p>
-    </section>
-
-    <section style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.06);">
-      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Goals & Objectives</h2>
-      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
-        <li>Enact a system of checks and balances to bring privately owned student housing in line with human rights standards.</li>
-        <li>Promote awareness of housing law and human rights around housing.</li>
-        <li>Create a rating system based on the definition of adequate housing.</li>
-        <li>Deploy the rating system in Brighton & Hove for a 6-month trial, then expand nationally.</li>
-        <li>Present data to pressure groups and parliament to secure government approval and funding.</li>
-      </ul>
-    </section>
-
-    <section style="background:var(--bg-light);border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.07);">
-      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Rating System</h2>
-      <p style="font-size:1.07rem;color:var(--primary-dark);margin-bottom:10px;">Each property/landlord/agent is rated on the following criteria (Yes/No):</p>
-      <ul style="margin-left:18px;">
-        <li>Accessibility</li>
-        <li>Security</li>
-        <li>Reliable utilities</li>
-        <li>Good transport links</li>
-        <li>Accepting community</li>
-        <li>Treating tenants with dignity and respect</li>
-        <li>Letting agents treating tenants with dignity and respect</li>
-        <li>Addressing concerns within 3-5 working days</li>
-        <li>Safe occupancy numbers</li>
-        <li>Rent in line with/below local averages</li>
-        <li>Compliance with housing laws and licensing</li>
-      </ul>
-      <div style="margin:18px 0 0 0;font-size:1.07rem;color:var(--primary-color);">
-        <strong>Score out of 11:</strong><br>
-        <span style="color:#10b981;font-weight:700;">40-55: Excellent</span><br>
-        <span style="color:#3b82f6;font-weight:700;">30-40: Good</span><br>
-        <span style="color:#f59e42;font-weight:700;">20-30: Needs Improvement</span><br>
-        <span style="color:#ef4444;font-weight:700;">10-20: Poor</span><br>
-        <span style="color:#7c3aed;font-weight:700;">0-10: Abhorrent</span>
+    <section id="mission" style="background:var(--bg-light);border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.07);">
+      <h2 style="font-size:1.5rem;color:var(--primary-color);font-weight:800;margin-bottom:12px;">Mission Statement & Ethos</h2>
+      <p style="font-size:1.08rem;color:var(--text-secondary);margin-bottom:14px;">We are a student-led housing campaign created by students for students. Our mission is to empower and uplift renters like us through accessible education on student housing rights. We fight for safe, fair and transparent renting by giving students the tools and confidence to know their rights, call out bad landlords and agencies, recognise the good ones and take collective action to transform the student housing experience.</p>
+      <div style="margin-top:18px;padding:18px;background:rgba(59,130,246,0.05);border-radius:12px;">
+        <p style="font-size:1.1rem;font-weight:700;color:var(--primary-color);margin-bottom:8px;">We:</p>
+        <ul style="list-style:none;margin-left:0;font-size:1.05rem;color:var(--primary-dark);">
+          <li><strong>I</strong>lluminate</li>
+          <li><strong>N</strong>eglect</li>
+          <li><strong>D</strong>emand</li>
+          <li><strong>O</strong>versight &</li>
+          <li><strong>W</strong>in justice</li>
+        </ul>
       </div>
-      <p style="margin-top:10px;color:var(--text-secondary);font-size:0.98rem;">Scores can be advertised by landlords to improve credibility.</p>
     </section>
 
-    <section style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.06);">
-      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Key Features</h2>
+    <section id="research" style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.06);">
+      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Research: Key Findings</h2>
       <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
-        <li>Leaderboard of landlords and estate agents</li>
-        <li>Hall of Fame / Hall of Shame media</li>
-        <li>Expose owners, donors, and not just company names</li>
-        <li>Weekly social media exposés and story requests</li>
-        <li>Workshops for students and landlords/agents</li>
-        <li>Leaflets, zines, posters, info cards (including braille)</li>
-        <li>Hashtags and keywords for filtering</li>
-        <li>Financialisation focus: show where rent goes, info on shareholders/investors</li>
-        <li>Accessibility filters and needs-based search</li>
-        <li>Protect integrity of ratings</li>
-        <li>Compare rent to area rates</li>
-        <li>No account required to read reviews; total anonymity for reviewers</li>
-        <li>Primary target: landlords (with financial incentives)</li>
-        <li>Secondary target: government, private housing orgs</li>
-        <li>Allies: charities, students; Constituents: renters; Opponents: investment firms, government</li>
+        <li><strong>Renters reform loophole:</strong> Most student accommodations are purpose-built and therefore not covered by the new bill protecting tenants.</li>
+        <li><strong>Ground 4A vulnerability:</strong> If your house is full of students, your property can be repossessed in 4 months—landlords chose student renting because classification makes you an exploitative target.</li>
+        <li><strong>No rent caps or fee limits:</strong> Purpose-built student accommodation run by private companies is not affected by rent caps and limited fees.</li>
+        <li><strong>Lack of direct laws:</strong> There are no specific laws directly regulating student accommodation standards.</li>
+        <li><strong>Manchester University case:</strong> Found to be keeping students in inadequate accommodation.</li>
+        <li><strong>Channel 4 Investigation:</strong> Exposed poor conditions in student housing.</li>
       </ul>
+      <div style="margin-top:16px;padding:14px;background:rgba(59,130,246,0.05);border-radius:10px;">
+        <p style="font-size:1.05rem;color:var(--primary-dark);margin:0;"><strong>Proposed Solutions:</strong> Universities directly owning homes for student housing, campaigning for specific student accommodation laws.</p>
+      </div>
     </section>
 
-    <section style="background:var(--bg-light);border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.07);">
-      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Campaign Launch Ideas</h2>
+    <section id="stats" style="background:var(--bg-light);border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.07);">
+      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Statistics: The Reality of Student Housing</h2>
+      <p style="font-size:1.05rem;color:var(--text-secondary);margin-bottom:14px;font-style:italic;">Concerningly, there are next to no official government statistics on student renting when it's placed in a different category to private renters.</p>
       <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
-        <li>Hall of Fame / Hall of Shame</li>
-        <li>Leaderboard of landlords/agents</li>
-        <li>Expose ranks and owners</li>
-        <li>Daily exposé posts in first week, then weekly</li>
-        <li>Surveys and feedback forms</li>
+        <li><strong>54%</strong> have experienced damp or mould on walls in their current accommodation</li>
+        <li><strong>57%</strong> have experienced condensation</li>
+        <li><strong>44%</strong> have experienced poor insulation</li>
+        <li><strong>48%</strong> have developed anxiety or felt depressed as a result of feeling cold in their accommodation</li>
+        <li><strong>84%</strong> of students experienced issues with the overall quality of their homes</li>
+        <li><strong>20%</strong> have ongoing pest infestation</li>
+        <li><strong>60%</strong> of students required a guarantor, <strong>40%</strong> found securing one difficult</li>
+        <li><strong>40%</strong> of students are going without heating to make ends meet</li>
       </ul>
-    </section>
-
-    <section style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.06);">
-      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Workshops</h2>
-      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
-        <li><strong>For Students:</strong> Discuss criteria, ranking, advice, resources, feedback, and community building.</li>
-        <li><strong>For Landlords/Agents:</strong> Criteria highs/lows, advice, support, and improvement strategies.</li>
-        <li>Leaflets, zines, posters distributed widely (including accessible formats).</li>
-      </ul>
-    </section>
-
-    <section style="background:var(--bg-light);border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.07);">
-      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Tactics</h2>
-      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
-        <li>Social media campaigns, surveys, workshops, ranking system</li>
-        <li>Petitions, leafleting, zines, stickers</li>
-        <li>Measure success by participation, social media engagement, workshop attendance, survey completions, petition signatures, and advertisement reach</li>
-      </ul>
-    </section>
-
-    <section style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.06);">
-      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Human Rights Foundation</h2>
-      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
-        <li>Article 25 of the Universal Declaration of Human Rights</li>
-        <li>Article 11(1) of the International Covenant on Economic, Social, and Cultural Rights</li>
-        <li>UN General Comment No. 4 on Adequate Housing</li>
-        <li>Yogyakarta Principles</li>
-        <li>Convention on the Rights of Persons with Disabilities</li>
-        <li>European Social Charter</li>
-        <li>African Charter on Human and People's Rights</li>
-      </ul>
-    </section>
-
-    <section style="background:var(--bg-light);border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.07);">
-      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Key Takeaways & Stats</h2>
-      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
-        <li>£2.8bn transacted in first 9 months of 2025</li>
-        <li>30.8% reduction in student visa issuances in 2024</li>
-        <li>University rental growth (4.44%) outstrips private sector (1.16%)</li>
-        <li>Rental growth in lowest quality stock (+4.14%) outstrips highest quality (-0.98%)</li>
-        <li>Average price per operational bed in 2025 is £100k</li>
-        <li>Postgraduate entrants down 9.7% in 2023/24</li>
-        <li>Yields stable at 4.25% Prime London, 5.25% Super Prime Regional</li>
-        <li>17.0% of beds above Maximum Maintenance Loan in 2025/26</li>
-        <li>Student to bed ratio projected at 1.90:1 by 2030/31</li>
-      </ul>
+      <p style="margin-top:12px;font-size:0.95rem;color:var(--text-secondary);">Sources: Save the Student UK (SOS UK), National Union of Students (NUS)</p>
+      
       <div style="margin:40px 0;">
         <h3 style="margin-bottom:18px;text-align:center;color:var(--primary-color);font-size:1.18rem;font-weight:700;">Interactive Campaign Charts</h3>
         <div class="campaign-charts-row" style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;">
@@ -216,7 +164,121 @@
       </div>
     </section>
 
-    <section style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.06);">
+    <section id="rating" style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.06);">
+      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Rating System: Scores, Criteria, Action</h2>
+      <p style="font-size:1.07rem;color:var(--primary-dark);margin-bottom:10px;">The rating system categories score a property based on whether they adhere to the different aspects of adequate housing, according to the definition provided by the UN Housing Ombudsman. These scores are then ranked on a colour-coded scale, giving a quantifiable ranking of how adequate the property is, akin to the food safety rating given to restaurants and food vendors.</p>
+      
+      <div style="margin:18px 0 0 0;font-size:1.07rem;color:var(--primary-color);">
+        <strong>Score out of 10:</strong><br>
+        <span style="color:#10b981;font-weight:700;">9+: Excellent</span><br>
+        <span style="color:#3b82f6;font-weight:700;">7-8: Good</span><br>
+        <span style="color:#f59e42;font-weight:700;">5-6: Fair</span><br>
+        <span style="color:#ef4444;font-weight:700;">3-4: Poor</span><br>
+        <span style="color:#7c3aed;font-weight:700;">1-2: Inadequate</span>
+      </div>
+      
+      <p style="margin-top:14px;color:var(--text-secondary);font-size:1.05rem;">This ranking can then be used by the property owner as a way to advertise the property in a more positive light, bring attention to residential areas that are struggling to meet the requirements, or highlight properties that deserve recognition.</p>
+      
+      <p style="margin-top:14px;color:var(--primary-dark);font-size:1.05rem;">Our system relies on a brief questionnaire of 10 yes or no questions that are each based on different aspects of the definition of adequate housing, and then graded based on how many they comply with. Each question will also have an optional short freeform box for expansion on any specific issues a property has.</p>
+    </section>
+
+    <section id="tactics" style="background:var(--bg-light);border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.07);">
+      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Tactics: Our Campaign Strategy</h2>
+      <div style="padding:14px;background:rgba(59,130,246,0.05);border-radius:10px;margin-bottom:16px;">
+        <p style="font-size:1.05rem;color:var(--primary-dark);margin:0;text-align:center;font-weight:600;">
+          SOCIAL MEDIA → SURVEY → WORKSHOPS → RANKING SYSTEM → SOCIAL MEDIA
+        </p>
+      </div>
+      
+      <h3 style="font-size:1.15rem;color:var(--primary-color);font-weight:700;margin-top:18px;margin-bottom:8px;">Phase 1: Launch & Survey</h3>
+      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
+        <li>Launch Instagram to introduce campaign & post survey</li>
+        <li>Promote survey via courses, societies, uni email bulletins</li>
+        <li>Collect responses to shape workshops</li>
+      </ul>
+      
+      <h3 style="font-size:1.15rem;color:var(--primary-color);font-weight:700;margin-top:18px;margin-bottom:8px;">Phase 2: Workshops & Awareness</h3>
+      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
+        <li>Run workshops</li>
+        <li>Promote ranking system</li>
+        <li>Boost visibility: social media, posters, campus talks, society takeovers</li>
+      </ul>
+      
+      <h3 style="font-size:1.15rem;color:var(--primary-color);font-weight:700;margin-top:18px;margin-bottom:8px;">Phase 3: Rankings Launch</h3>
+      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
+        <li>Launch landlord/agent rankings</li>
+        <li>Continue biweekly workshops</li>
+        <li>Gather feedback from students</li>
+      </ul>
+      
+      <h3 style="font-size:1.15rem;color:var(--primary-color);font-weight:700;margin-top:18px;margin-bottom:8px;">Phase 4: Sustained Action</h3>
+      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
+        <li>Post weekly rankings</li>
+        <li>Keep workshops biweekly</li>
+        <li>Share petitions and drive direct action</li>
+      </ul>
+      
+      <div style="margin-top:18px;padding:14px;background:rgba(59,130,246,0.05);border-radius:10px;">
+        <p style="font-size:1.05rem;color:var(--primary-dark);margin:0;"><strong>Theory:</strong> Increased competition + landlord reputation incentives = improved housing standards. Using <strong>Akerlof's Lemon Theory</strong>, we reduce information asymmetry, so good landlords can be rewarded and bad landlords can't hide behind the same pricing as quality providers.</p>
+      </div>
+      
+      <h3 style="font-size:1.15rem;color:var(--primary-color);font-weight:700;margin-top:18px;margin-bottom:8px;">Measuring Success</h3>
+      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
+        <li><strong>Social media:</strong> DMs, followers, likes, interaction</li>
+        <li><strong>Workshops:</strong> Attendance numbers, feedback survey completions</li>
+        <li><strong>Survey:</strong> Completion rate</li>
+        <li><strong>Advertisement:</strong> Society social takeovers, campaign shares</li>
+      </ul>
+    </section>
+
+    <section id="rights" style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.06);">
+      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">The Rights: Article 11 of the Covenant for Human Rights</h2>
+      <p style="font-size:1.07rem;color:var(--text-secondary);margin-bottom:14px;">Our rating system is based on the internationally recognized definition of adequate housing. All quotes below are directly from Article 11 of the International Covenant on Economic, Social and Cultural Rights.</p>
+      
+      <div style="display:grid;gap:14px;">
+        <div style="padding:12px;background:rgba(59,130,246,0.03);border-radius:8px;border-left:3px solid var(--primary-color);">
+          <h4 style="font-size:1.05rem;color:var(--primary-color);font-weight:700;margin-bottom:6px;">Legal Security of Tenure</h4>
+          <p style="font-size:1rem;color:var(--primary-dark);margin:0;">All persons should possess a degree of security of tenure which guarantees legal protection against forced eviction, harassment and other threats.</p>
+        </div>
+        
+        <div style="padding:12px;background:rgba(59,130,246,0.03);border-radius:8px;border-left:3px solid var(--primary-color);">
+          <h4 style="font-size:1.05rem;color:var(--primary-color);font-weight:700;margin-bottom:6px;">Availability of Services</h4>
+          <p style="font-size:1rem;color:var(--primary-dark);margin:0;">An adequate house must contain certain facilities essential for health, security, comfort and nutrition. All beneficiaries should have sustainable access to natural and common resources, safe drinking water, energy for cooking, heating and lighting, sanitation and washing facilities, means of food storage, refuse disposal, site drainage and emergency services.</p>
+        </div>
+        
+        <div style="padding:12px;background:rgba(59,130,246,0.03);border-radius:8px;border-left:3px solid var(--primary-color);">
+          <h4 style="font-size:1.05rem;color:var(--primary-color);font-weight:700;margin-bottom:6px;">Affordability</h4>
+          <p style="font-size:1rem;color:var(--primary-dark);margin:0;">Personal or household financial costs associated with housing should be at such a level that the attainment and satisfaction of other basic needs are not threatened or compromised.</p>
+        </div>
+        
+        <div style="padding:12px;background:rgba(59,130,246,0.03);border-radius:8px;border-left:3px solid var(--primary-color);">
+          <h4 style="font-size:1.05rem;color:var(--primary-color);font-weight:700;margin-bottom:6px;">Habitability</h4>
+          <p style="font-size:1rem;color:var(--primary-dark);margin:0;">Adequate housing must be habitable, in terms of providing the inhabitants with adequate space and protecting them from cold, damp, heat, rain, wind or other threats to health, structural hazards, and disease vectors.</p>
+        </div>
+        
+        <div style="padding:12px;background:rgba(59,130,246,0.03);border-radius:8px;border-left:3px solid var(--primary-color);">
+          <h4 style="font-size:1.05rem;color:var(--primary-color);font-weight:700;margin-bottom:6px;">Accessibility</h4>
+          <p style="font-size:1rem;color:var(--primary-dark);margin:0;">Adequate housing must be accessible to those entitled to it. Disadvantaged groups must be accorded full and sustainable access to adequate housing resources.</p>
+        </div>
+        
+        <div style="padding:12px;background:rgba(59,130,246,0.03);border-radius:8px;border-left:3px solid var(--primary-color);">
+          <h4 style="font-size:1.05rem;color:var(--primary-color);font-weight:700;margin-bottom:6px;">Location</h4>
+          <p style="font-size:1rem;color:var(--primary-dark);margin:0;">Adequate housing must be in a location which allows access to employment options, health-care services, schools, childcare centres and other social facilities.</p>
+        </div>
+        
+        <div style="padding:12px;background:rgba(59,130,246,0.03);border-radius:8px;border-left:3px solid var(--primary-color);">
+          <h4 style="font-size:1.05rem;color:var(--primary-color);font-weight:700;margin-bottom:6px;">Cultural Adequacy</h4>
+          <p style="font-size:1rem;color:var(--primary-dark);margin:0;">The way housing is constructed, the building materials used and the policies supporting these must appropriately enable the expression of cultural identity and diversity of housing.</p>
+        </div>
+        
+        <div style="padding:12px;background:rgba(59,130,246,0.03);border-radius:8px;border-left:3px solid var(--primary-color);">
+          <h4 style="font-size:1.05rem;color:var(--primary-color);font-weight:700;margin-bottom:6px;">Intersectionality in Rights</h4>
+          <p style="font-size:1rem;color:var(--primary-dark);margin:0;">States recognize the right of persons with disabilities to an adequate standard of living, including adequate housing, and shall take appropriate steps to ensure equal access, particularly for women and girls with disabilities and older persons with disabilities.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" style="background:var(--bg-light);border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.07);">
       <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Team Roles</h2>
       <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
         <li><strong>Kathryn:</strong> Tactics, social media mockups, leaflet mockup, workshop outlines</li>
@@ -227,12 +289,26 @@
       </ul>
     </section>
 
+    <section style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.06);">
+      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Live Example</h2>
+      <p style="font-size:1.07rem;color:var(--primary-dark);margin-bottom:14px;">
+        There is a live preview available to view and use. You can explore our campaign platform and submit feedback directly via the site.
+      </p>
+      <div style="text-align:center;margin-top:18px;">
+        <a href="/" class="btn-primary" style="display:inline-block;padding:12px 24px;background:var(--primary-color);color:#fff;text-decoration:none;border-radius:8px;font-weight:600;transition:all 0.2s;">Explore Clear Window Platform</a>
+      </div>
+    </section>
+
     <section style="background:var(--bg-light);border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.07);">
-      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Contact & Get Involved</h2>
-      <p style="font-size:1.07rem;color:var(--primary-dark);margin-bottom:0;">
+      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Get Involved</h2>
+      <p style="font-size:1.07rem;color:var(--primary-dark);margin-bottom:14px;">
         Follow us on Instagram: <strong>@clearwindow</strong><br>
         DMs open. Workshops loading. Get involved!
       </p>
+      <div style="margin-top:18px;">
+        <a href="/feedback" class="btn-secondary" style="display:inline-block;margin-right:12px;padding:10px 20px;border:2px solid var(--primary-color);color:var(--primary-color);text-decoration:none;border-radius:8px;font-weight:600;transition:all 0.2s;">Submit Feedback</a>
+        <a href="/workshops" class="btn-secondary" style="display:inline-block;padding:10px 20px;border:2px solid var(--primary-color);color:var(--primary-color);text-decoration:none;border-radius:8px;font-weight:600;transition:all 0.2s;">View Workshops</a>
+      </div>
     </section>
   </div>
 

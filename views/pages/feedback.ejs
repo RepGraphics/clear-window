@@ -1,55 +1,130 @@
 <%- include('../partials/header', { title: 'Submit Feedback', page: 'feedback' }) %>
 
-<section class="section" style="height: 100vh;">
+<section class="section">
     <div class="container" style="max-width: 600px;">
         <h1 class="section-title" style="text-align:center;">Submit Campaign Feedback</h1>
         <form id="feedbackForm" method="POST" action="/api/feedback" class="form-card">
             <div class="form-group">
                 <label for="name">Name (optional)</label>
-                <input type="text" id="name" name="name" class="form-control" placeholder="Your name">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Your name" maxlength="100">
             </div>
             <div class="form-group">
                 <label for="email">Email (optional)</label>
-                <input type="email" id="email" name="email" class="form-control" placeholder="Your email">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Your email" maxlength="100">
             </div>
+            <!-- Honeypot field (hidden from users, catches bots) -->
+            <input type="text" name="website" id="website" style="display:none;" tabindex="-1" autocomplete="off">
             <div class="form-group">
-                <label for="message">Feedback</label>
-                <textarea id="message" name="message" class="form-control" rows="5" required placeholder="Your feedback..."></textarea>
+                <label for="message">Feedback <span style="color:#888;font-size:0.9rem;">(20-1000 characters)</span></label>
+                <textarea id="message" name="message" class="form-control" rows="5" required placeholder="Your feedback..." minlength="20" maxlength="1000"></textarea>
             </div>
             <button type="submit" class="btn-primary btn-large" style="width:100%;margin-top:16px;">Submit Feedback</button>
         </form>
         <div id="feedbackAlert" style="margin-top:20px;"></div>
     </div>
-
-    <% if (typeof feedbackList !== 'undefined' && feedbackList.length > 0) { %>
-    <div class="feedback-list">
-        <h2 class="section-title">Recent Feedback</h2>
-        <% feedbackList.forEach(function(feedback) { %>
-            <div class="feedback-item">
-                <div class="feedback-meta">
-                    <span><%= feedback.name ? feedback.name : 'Anonymous' %></span>
-                    <span class="feedback-date"><%= feedback.createdAt.toLocaleString() %></span>
-                </div>
-                <div class="feedback-message">
-                    <%= feedback.message %>
-                </div>
-            </div>
-        <% }); %>
-    </div>
-<% } %>
 </section>
 
+<% if (typeof feedbackList !== 'undefined' && feedbackList.length > 0) { %>
+<section class="section bg-light">
+    <div class="container" style="max-width: 800px;">
+        <h2 class="section-title" style="text-align:center;margin-bottom:32px;">Recent Feedback</h2>
+        <div class="feedback-list">
+            <% feedbackList.forEach(function(feedback) { %>
+                <div class="feedback-item">
+                    <div class="feedback-meta">
+                        <span><%= feedback.name ? feedback.name : 'Anonymous' %></span>
+                        <span class="feedback-date"><%= feedback.createdAt.toLocaleString() %></span>
+                    </div>
+                    <div class="feedback-message">
+                        <%= feedback.message %>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</section>
+<% } %>
+
 <script>
+    // Anti-spam: Rate limiting
+    let lastSubmitTime = 0;
+    const RATE_LIMIT_MS = 60000; // 1 minute between submissions
+
+    // Anti-spam: Spam keyword detection
+    const spamKeywords = [
+        'whatsapp', 'reference website', 'business online', 'digital presence',
+        'seo service', 'rank your website', 'generate more leads', 'professional website',
+        'warm regards', 'best regards', 'click here', 'limited time offer',
+        'make money', 'earn money', 'crypto', 'investment opportunity',
+        'weight loss', 'dating site', 'adult content', 'viagra', 'cialis'
+    ];
+
+    function detectSpam(text) {
+        const lowerText = text.toLowerCase();
+        
+        // Check for excessive URLs (more than 2)
+        const urlCount = (lowerText.match(/http[s]?:\/\//g) || []).length;
+        if (urlCount > 2) return true;
+        
+        // Check for spam keywords (2 or more)
+        let keywordCount = 0;
+        for (const keyword of spamKeywords) {
+            if (lowerText.includes(keyword)) keywordCount++;
+            if (keywordCount >= 2) return true;
+        }
+        
+        // Check for excessive capitalization (more than 30% caps)
+        const capsCount = (text.match(/[A-Z]/g) || []).length;
+        const totalLetters = (text.match(/[a-zA-Z]/g) || []).length;
+        if (totalLetters > 20 && (capsCount / totalLetters) > 0.3) return true;
+        
+        return false;
+    }
+
     document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         const form = e.target;
         const alertBox = document.getElementById('feedbackAlert');
         alertBox.innerHTML = '';
+        
+        // Anti-spam: Check honeypot field
+        if (form.website.value !== '') {
+            alertBox.innerHTML = '<div class="alert alert-error">Spam detected. Submission blocked.</div>';
+            return;
+        }
+        
+        // Anti-spam: Rate limiting
+        const now = Date.now();
+        if (now - lastSubmitTime < RATE_LIMIT_MS) {
+            const waitTime = Math.ceil((RATE_LIMIT_MS - (now - lastSubmitTime)) / 1000);
+            alertBox.innerHTML = `<div class="alert alert-error">Please wait ${waitTime} seconds before submitting again.</div>`;
+            return;
+        }
+        
+        const message = form.message.value.trim();
+        
+        // Anti-spam: Length validation
+        if (message.length < 20) {
+            alertBox.innerHTML = '<div class="alert alert-error">Feedback must be at least 20 characters.</div>';
+            return;
+        }
+        if (message.length > 1000) {
+            alertBox.innerHTML = '<div class="alert alert-error">Feedback must be less than 1000 characters.</div>';
+            return;
+        }
+        
+        // Anti-spam: Content validation
+        if (detectSpam(message)) {
+            alertBox.innerHTML = '<div class="alert alert-error">Your message appears to be spam. Please submit genuine feedback only.</div>';
+            return;
+        }
+        
         const formData = {
-            name: form.name.value,
-            email: form.email.value,
-            message: form.message.value
+            name: form.name.value.trim(),
+            email: form.email.value.trim(),
+            message: message
         };
+        
         try {
             const res = await fetch('/api/feedback', {
                 method: 'POST',
@@ -58,9 +133,10 @@
             });
             const data = await res.json();
             if (res.ok) {
+                lastSubmitTime = Date.now();
                 alertBox.innerHTML = '<div class="alert alert-success">Thank you for your feedback!</div>';
                 form.reset();
-                window.location.reload();
+                setTimeout(() => window.location.reload(), 2000);
             } else {
                 alertBox.innerHTML = `<div class="alert alert-error">${data.message || 'Error submitting feedback.'}</div>`;
             }

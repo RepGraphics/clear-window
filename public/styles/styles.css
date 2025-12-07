@@ -15,6 +15,19 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Focus visibility for keyboard navigation */
+*:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
 :root {
     --primary-color: #0284c7;
     --primary-dark: #0369a1;
@@ -63,10 +76,18 @@ body {
     color: var(--text-primary);
     background-color: var(--bg-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 body * {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body > section,
+body > main {
+    flex: 1 0 auto;
 }
 
 .container {
@@ -463,6 +484,9 @@ body * {
 /* Sections */
 .section {
     padding: 80px 0;
+    position: relative;
+    z-index: 1;
+    height: auto;
 }
 
 .bg-light {
@@ -682,10 +706,7 @@ body * {
 
 /* Trust & Safety */
 .trust-content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 64px;
-    align-items: start;
+    display: block;
 }
 
 .trust-visual {
@@ -832,6 +853,64 @@ body * {
     display: flex;
     gap: 16px;
     justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Trust Points - Campaign Statistics */
+.trust-points {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.trust-point {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 24px;
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trust-point:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.point-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-light);
+    border-radius: 12px;
+}
+
+.point-content {
+    flex: 1;
+}
+
+.point-content h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.point-content p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.point-content p strong {
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 /* Footer */
@@ -840,6 +919,11 @@ body * {
     color: var(--text-primary);
     padding: 64px 0 32px;
     border-top: 1px solid var(--border-color);
+    position: relative;
+    z-index: 10;
+    clear: both;
+    flex-shrink: 0;
+    margin-top: auto;
 }
 
 [data-theme="dark"] .footer {
@@ -919,11 +1003,45 @@ body * {
     .trust-visual {
         position: static;
     }
+    
+    .trust-points {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
 }
 
 @media (max-width: 768px) {
     .mobile-menu-toggle {
         display: flex;
+    }
+    
+    .trust-point {
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px;
+    }
+    
+    .point-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 28px;
+    }
+    
+    .point-content h3 {
+        font-size: 18px;
+    }
+    
+    .point-content p {
+        font-size: 15px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .cta-buttons .btn-large {
+        width: 100%;
     }
 
     .nav-links {
@@ -2244,10 +2362,10 @@ body * {
 
 /* Feedback List Styles */
 .feedback-list {
-    margin-top: 40px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    padding-bottom: 40px;
 }
 .feedback-list .section-title {
     margin-bottom: 24px;
@@ -2263,6 +2381,8 @@ body * {
     box-shadow: 0 2px 12px rgba(59,130,246,0.07);
     border: 1px solid var(--border-color);
     transition: box-shadow 0.18s, transform 0.18s;
+    position: relative;
+    z-index: 1;
 }
 .feedback-item:hover {
     box-shadow: 0 6px 24px rgba(59,130,246,0.13);

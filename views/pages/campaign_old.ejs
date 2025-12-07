@@ -1,0 +1,308 @@
+
+<%- include('../partials/header', { title: 'Clear Window Campaign', page: 'campaign' }) %>
+
+<div class="container campaign-page" style="max-width:900px;margin:auto;padding:32px 0;">
+  <style>
+    @media (max-width: 600px) {
+      .campaign-page {
+        padding: 8px 16px !important;
+      }
+      .campaign-page h1 {
+        font-size: 1.5rem !important;
+        margin-bottom: 12px !important;
+      }
+      .campaign-page section {
+        padding: 10px 4px !important;
+      }
+      .campaign-page ul {
+        margin-left: 4px !important;
+        font-size: 0.95rem !important;
+      }
+      .campaign-page h2 {
+        font-size: 1rem !important;
+        margin-bottom: 6px !important;
+      }
+      .campaign-page h3 {
+        font-size: 0.95rem !important;
+      }
+      .campaign-page h4 {
+        font-size: 0.95rem !important;
+      }
+      .campaign-page p, .campaign-page li {
+        font-size: 0.92rem !important;
+      }
+      .campaign-charts-row {
+        flex-direction: column !important;
+        gap: 24px !important;
+        align-items: stretch !important;
+      }
+      .campaign-chart-card {
+        width: 90% !important;
+        max-width: 400px !important;
+        min-width: 0 !important;
+        margin: 0 auto 18px auto !important;
+        box-sizing: border-box !important;
+        padding: 14px 18px !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+        overflow: hidden !important;
+      }
+      .campaign-chart-card h4,
+      .campaign-chart-card p {
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-wrap: break-word;
+        word-break: break-word;
+      }
+      .campaign-chart-card canvas {
+        display: block !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 320px !important;
+        height: auto !important;
+        aspect-ratio: 1/1 !important;
+      }
+    }
+  </style>
+  <h1 style="font-size:2.8rem;font-weight:900;margin-bottom:22px;color:var(--primary-color);letter-spacing:-1px;text-align:center;">Clear Window Campaign</h1>
+  <p style="font-size:1.25rem;color:var(--text-secondary);margin-bottom:32px;text-align:center;max-width:700px;margin:auto;">
+    Our campaign is built on <span style="color:var(--primary-color);font-weight:700;">transparency</span>, designed to let students see exactly what's inside the world of renting. No fog, no curtains—just the truth, so you can make sustainable, informed choices about where you live.
+  </p>
+
+  <div style="display:grid;gap:32px;">
+    <section style="background:var(--bg-light);border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.07);">
+      <h2 style="font-size:1.5rem;color:var(--primary-color);font-weight:800;margin-bottom:12px;">Mission Statement</h2>
+      <p style="font-size:1.08rem;color:var(--text-secondary);">We are a student-led housing campaign created by students for students. Our mission is to empower and uplift renters through accessible education on student housing rights. We fight for safe, fair, and transparent renting by giving students the tools and confidence to know their rights, call out bad landlords and agencies, recognise the good ones, and take collective action to transform the student housing experience.</p>
+    </section>
+
+    <section style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.06);">
+      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Goals & Objectives</h2>
+      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
+        <li>Enact a system of checks and balances to bring privately owned student housing in line with human rights standards.</li>
+        <li>Promote awareness of housing law and human rights around housing.</li>
+        <li>Create a rating system based on the definition of adequate housing.</li>
+        <li>Deploy the rating system in Brighton & Hove for a 6-month trial, then expand nationally.</li>
+        <li>Present data to pressure groups and parliament to secure government approval and funding.</li>
+      </ul>
+    </section>
+
+    <section style="background:var(--bg-light);border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.07);">
+      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Rating System</h2>
+      <p style="font-size:1.07rem;color:var(--primary-dark);margin-bottom:10px;">Each property/landlord/agent is rated on the following criteria (Yes/No):</p>
+      <ul style="margin-left:18px;">
+        <li>Accessibility</li>
+        <li>Security</li>
+        <li>Reliable utilities</li>
+        <li>Good transport links</li>
+        <li>Accepting community</li>
+        <li>Treating tenants with dignity and respect</li>
+        <li>Letting agents treating tenants with dignity and respect</li>
+        <li>Addressing concerns within 3-5 working days</li>
+        <li>Safe occupancy numbers</li>
+        <li>Rent in line with/below local averages</li>
+        <li>Compliance with housing laws and licensing</li>
+      </ul>
+      <div style="margin:18px 0 0 0;font-size:1.07rem;color:var(--primary-color);">
+        <strong>Score out of 11:</strong><br>
+        <span style="color:#10b981;font-weight:700;">40-55: Excellent</span><br>
+        <span style="color:#3b82f6;font-weight:700;">30-40: Good</span><br>
+        <span style="color:#f59e42;font-weight:700;">20-30: Needs Improvement</span><br>
+        <span style="color:#ef4444;font-weight:700;">10-20: Poor</span><br>
+        <span style="color:#7c3aed;font-weight:700;">0-10: Abhorrent</span>
+      </div>
+      <p style="margin-top:10px;color:var(--text-secondary);font-size:0.98rem;">Scores can be advertised by landlords to improve credibility.</p>
+    </section>
+
+    <section style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.06);">
+      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Key Features</h2>
+      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
+        <li>Leaderboard of landlords and estate agents</li>
+        <li>Hall of Fame / Hall of Shame media</li>
+        <li>Expose owners, donors, and not just company names</li>
+        <li>Weekly social media exposés and story requests</li>
+        <li>Workshops for students and landlords/agents</li>
+        <li>Leaflets, zines, posters, info cards (including braille)</li>
+        <li>Hashtags and keywords for filtering</li>
+        <li>Financialisation focus: show where rent goes, info on shareholders/investors</li>
+        <li>Accessibility filters and needs-based search</li>
+        <li>Protect integrity of ratings</li>
+        <li>Compare rent to area rates</li>
+        <li>No account required to read reviews; total anonymity for reviewers</li>
+        <li>Primary target: landlords (with financial incentives)</li>
+        <li>Secondary target: government, private housing orgs</li>
+        <li>Allies: charities, students; Constituents: renters; Opponents: investment firms, government</li>
+      </ul>
+    </section>
+
+    <section style="background:var(--bg-light);border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.07);">
+      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Campaign Launch Ideas</h2>
+      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
+        <li>Hall of Fame / Hall of Shame</li>
+        <li>Leaderboard of landlords/agents</li>
+        <li>Expose ranks and owners</li>
+        <li>Daily exposé posts in first week, then weekly</li>
+        <li>Surveys and feedback forms</li>
+      </ul>
+    </section>
+
+    <section style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.06);">
+      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Workshops</h2>
+      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
+        <li><strong>For Students:</strong> Discuss criteria, ranking, advice, resources, feedback, and community building.</li>
+        <li><strong>For Landlords/Agents:</strong> Criteria highs/lows, advice, support, and improvement strategies.</li>
+        <li>Leaflets, zines, posters distributed widely (including accessible formats).</li>
+      </ul>
+    </section>
+
+    <section style="background:var(--bg-light);border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.07);">
+      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Tactics</h2>
+      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
+        <li>Social media campaigns, surveys, workshops, ranking system</li>
+        <li>Petitions, leafleting, zines, stickers</li>
+        <li>Measure success by participation, social media engagement, workshop attendance, survey completions, petition signatures, and advertisement reach</li>
+      </ul>
+    </section>
+
+    <section style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.06);">
+      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Human Rights Foundation</h2>
+      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
+        <li>Article 25 of the Universal Declaration of Human Rights</li>
+        <li>Article 11(1) of the International Covenant on Economic, Social, and Cultural Rights</li>
+        <li>UN General Comment No. 4 on Adequate Housing</li>
+        <li>Yogyakarta Principles</li>
+        <li>Convention on the Rights of Persons with Disabilities</li>
+        <li>European Social Charter</li>
+        <li>African Charter on Human and People's Rights</li>
+      </ul>
+    </section>
+
+    <section style="background:var(--bg-light);border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.07);">
+      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Key Takeaways & Stats</h2>
+      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
+        <li>£2.8bn transacted in first 9 months of 2025</li>
+        <li>30.8% reduction in student visa issuances in 2024</li>
+        <li>University rental growth (4.44%) outstrips private sector (1.16%)</li>
+        <li>Rental growth in lowest quality stock (+4.14%) outstrips highest quality (-0.98%)</li>
+        <li>Average price per operational bed in 2025 is £100k</li>
+        <li>Postgraduate entrants down 9.7% in 2023/24</li>
+        <li>Yields stable at 4.25% Prime London, 5.25% Super Prime Regional</li>
+        <li>17.0% of beds above Maximum Maintenance Loan in 2025/26</li>
+        <li>Student to bed ratio projected at 1.90:1 by 2030/31</li>
+      </ul>
+      <div style="margin:40px 0;">
+        <h3 style="margin-bottom:18px;text-align:center;color:var(--primary-color);font-size:1.18rem;font-weight:700;">Interactive Campaign Charts</h3>
+        <div class="campaign-charts-row" style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;">
+          <div class="campaign-chart-card" style="width:340px;background:#fff;border-radius:14px;box-shadow:0 2px 8px rgba(59,130,246,0.08);padding:18px;">
+            <h4 style="text-align:center;color:var(--primary-color);font-size:1.08rem;margin-bottom:8px;">Frequency of Rent Struggles</h4>
+            <p style="font-size:0.98rem;color:var(--text-secondary);text-align:center;margin-bottom:10px;">How often students report struggling to pay rent during their studies.</p>
+            <canvas id="chartRentStruggle" width="320" height="320"></canvas>
+          </div>
+          <div class="campaign-chart-card" style="width:340px;background:#fff;border-radius:14px;box-shadow:0 2px 8px rgba(59,130,246,0.08);padding:18px;">
+            <h4 style="text-align:center;color:var(--primary-color);font-size:1.08rem;margin-bottom:8px;">Student Housing Issues</h4>
+            <p style="font-size:0.98rem;color:var(--text-secondary);text-align:center;margin-bottom:10px;">Percentage of students experiencing mould, pests, homelessness, or considering dropping out due to housing costs.</p>
+            <canvas id="chartStudentIssues" width="320" height="220"></canvas>
+          </div>
+          <div class="campaign-chart-card" style="width:340px;background:#fff;border-radius:14px;box-shadow:0 2px 8px rgba(59,130,246,0.08);padding:18px;">
+            <h4 style="text-align:center;color:var(--primary-color);font-size:1.08rem;margin-bottom:8px;">Rent vs. Maintenance Loan</h4>
+            <p style="font-size:0.98rem;color:var(--text-secondary);text-align:center;margin-bottom:10px;">How student rent compares to their annual maintenance loan entitlement.</p>
+            <canvas id="chartRentVsLoan" width="320" height="320"></canvas>
+          </div>
+          <div class="campaign-chart-card" style="width:340px;background:#fff;border-radius:14px;box-shadow:0 2px 8px rgba(59,130,246,0.08);padding:18px;">
+            <h4 style="text-align:center;color:var(--primary-color);font-size:1.08rem;margin-bottom:8px;">Top UK University Accommodation Ratings</h4>
+            <p style="font-size:0.98rem;color:var(--text-secondary);text-align:center;margin-bottom:10px;">Average accommodation ratings for leading UK universities (out of 5).</p>
+            <canvas id="chartUniRatings" width="320" height="220"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.06);">
+      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Team Roles</h2>
+      <ul style="font-size:1.07rem;color:var(--primary-dark);margin-left:18px;">
+        <li><strong>Kathryn:</strong> Tactics, social media mockups, leaflet mockup, workshop outlines</li>
+        <li><strong>Rhys:</strong> Criteria, justifications, score system</li>
+        <li><strong>Charlotte:</strong> Law of student housing, new approaches/laws</li>
+        <li><strong>Jamie:</strong> Graphics, stats, hall of fame/shame media</li>
+        <li><strong>Charlie:</strong> Created live Demo Site of Clear Window</li>
+      </ul>
+    </section>
+
+    <section style="background:var(--bg-light);border-radius:18px;padding:32px 28px;box-shadow:0 2px 12px rgba(59,130,246,0.07);">
+      <h2 style="font-size:1.35rem;color:var(--primary-color);font-weight:800;margin-bottom:10px;">Contact & Get Involved</h2>
+      <p style="font-size:1.07rem;color:var(--primary-dark);margin-bottom:0;">
+        Follow us on Instagram: <strong>@clearwindow</strong><br>
+        DMs open. Workshops loading. Get involved!
+      </p>
+    </section>
+  </div>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Pie chart: Frequency of rent struggles
+    new Chart(document.getElementById('chartRentStruggle'), {
+      type: 'pie',
+      data: {
+        labels: ['Sometimes struggle', 'Constant struggle', 'No struggle'],
+        datasets: [{
+          data: [64, 20, 16],
+          backgroundColor: ['#3B82F6','#EF4444','#10B981']
+        }]
+      },
+      options: {
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+
+    // Bar chart: Student housing issues
+    new Chart(document.getElementById('chartStudentIssues'), {
+      type: 'bar',
+      data: {
+        labels: ['Mould/Mildew', 'Pest Infestation', 'Homelessness', 'Considered Dropping Out'],
+        datasets: [{
+          label: 'Percentage of Students (%)',
+          data: [49, 20, 7, 36],
+          backgroundColor: ['#F59E42','#FBBF24','#EF4444','#6366F1']
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true, max: 100 } }
+      }
+    });
+
+    // Pie chart: Rent vs. Maintenance Loan
+    new Chart(document.getElementById('chartRentVsLoan'), {
+      type: 'pie',
+      data: {
+        labels: ['Entire loan', 'Significantly greater', 'Slightly greater', 'Equal or lower'],
+        datasets: [{
+          data: [51, 25, 16, 8],
+          backgroundColor: ['#10B981','#F59E42','#3B82F6','#6366F1']
+        }]
+      },
+      options: {
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+
+    // Bar chart: Top 5 UK University accommodation ratings
+    new Chart(document.getElementById('chartUniRatings'), {
+      type: 'bar',
+      data: {
+        labels: ['Edge Hill', 'Liverpool John Moores', 'Newcastle', 'Liverpool', 'Lincoln'],
+        datasets: [{
+          label: 'Accommodation Rating',
+          data: [4.16, 4.22, 4.16, 4.15, 3.99],
+          backgroundColor: ['#3B82F6','#10B981','#F59E42','#FBBF24','#6366F1']
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true, max: 5 } }
+      }
+    });
+  </script>
+
+</div>
+<%- include('../partials/footer', { scripts: null }) %>

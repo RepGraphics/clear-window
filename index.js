@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
+const compression = require('compression');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -26,6 +27,10 @@ const PORT = process.env.PORT || 5000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// Trust proxy - Cloudflare + nginx proxy setup
+// Trust all proxies since we're behind Cloudflare and nginx
+app.set('trust proxy', true);
+
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -39,13 +44,30 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 // Security middleware
 app.use(helmet({
-    contentSecurityPolicy: false, // Allow inline scripts for frontend
-    crossOriginEmbedderPolicy: false
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net"],
+            styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+            fontSrc: ["'self'", "https://fonts.gstatic.com"],
+            imgSrc: ["'self'", "data:", "https:"],
+            connectSrc: ["'self'", process.env.APP_URL || 'http://localhost:5000']
+        }
+    },
+    crossOriginEmbedderPolicy: false,
+    hsts: {
+        maxAge: 31536000,
+        includeSubDomains: true,
+        preload: true
+    }
 }));
 app.use(cors({
     origin: process.env.APP_URL || 'http://localhost:5000',
     credentials: true
 }));
+
+// Compression middleware for performance
+app.use(compression());
 
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
